@@ -1,21 +1,20 @@
 const router = require('express').Router()
+const moment = require('moment')
 
 const time_slots = [
     {
         dayId: 1,
         timeslot_id: 1,
         start_time: (() => {
-            const startTime = new Date();
-            startTime.setHours(9);
-            startTime.setMinutes(0);
-            startTime.setSeconds(0);
+          const startTime = moment();
+          startTime.set('hour', 9);
+          startTime.set('minute', 0);
             return startTime;
           })(),
         end_time: (() =>{
-            const endTime = new Date();
-            endTime.setHours(9);
-            endTime.setMinutes(25);
-            endTime.setSeconds(0);
+          const endTime = moment();
+          endTime.set('hour', 9);
+          endTime.set('minute', 25);
             return endTime;
           })(),
         //unavailable, available
@@ -25,17 +24,15 @@ const time_slots = [
         dayId: 1,
         timeslot_id: 2,
         start_time: (() => {
-            const startTime = new Date();
-            startTime.setHours(9);
-            startTime.setMinutes(30);
-            startTime.setSeconds(0);
+            const startTime = moment();
+            startTime.set('hour', 9);
+            startTime.set('minute', 30);
             return startTime;
           })(),
         end_time: (() =>{
-            const endTime = new Date();
-            endTime.setHours(9);
-            endTime.setMinutes(55);
-            endTime.setSeconds(0);
+          const endTime = moment();
+          endTime.set('hour', 9);
+          endTime.set('minute', 55);
             return endTime;
           })(),
         //unavailable, available
@@ -45,17 +42,15 @@ const time_slots = [
         dayId: 1,
         timeslot_id: 3,
         start_time: (() => {
-            const startTime = new Date();
-            startTime.setHours(10);
-            startTime.setMinutes(0);
-            startTime.setSeconds(0);
+            const startTime = moment();
+            startTime.set('hour', 10);
+            startTime.set('minute', 00);
             return startTime;
           })(),
         end_time: (() =>{
-            const endTime = new Date();
-            endTime.setHours(10);
-            endTime.setMinutes(25);
-            endTime.setSeconds(0);
+          const endTime = moment();
+          endTime.set('hour', 10);
+          endTime.set('minute', 25);
             return endTime;
           })(),
         //unavailable, available
@@ -65,22 +60,56 @@ const time_slots = [
         dayId: 2,
         timeslot_id:4,
         start_time: (() => {
-            const startTime = new Date();
-            startTime.setHours(10);
-            startTime.setMinutes(30);
-            startTime.setSeconds(0);
+            const startTime = moment();
+            startTime.set('hour', 10);
+            startTime.set('minute', 30);
             return startTime;
           })(),
         end_time: (() =>{
-            const endTime = new Date();
-            endTime.setHours(10);
-            endTime.setMinutes(55);
-            endTime.setSeconds(0);
+            const endTime = moment();
+            endTime.set('hour', 10);
+            endTime.set('minute', 55);
             return endTime;
           })(),
         //unavailable, available
         type: "Available" 
-    }
+    },
+    {
+      dayId: 4,
+      timeslot_id:5,
+      start_time: (() => {
+          const startTime = moment();
+          startTime.set('hour', 10);
+          startTime.set('minute', 30);
+          return startTime;
+        })(),
+      end_time: (() =>{
+          const endTime = moment();
+          endTime.set('hour', 10);
+          endTime.set('minute', 55);
+          return endTime;
+        })(),
+      //unavailable, available
+      type: "Available" 
+  },
+  {
+    dayId: 4,
+    timeslot_id:6,
+    start_time: (() => {
+        const startTime = moment();
+        startTime.set('hour', 10);
+        startTime.set('minute', 30);
+        return startTime;
+      })(),
+    end_time: (() =>{
+        const endTime = moment();
+        endTime.set('hour', 10);
+        endTime.set('minute', 55);
+        return endTime;
+      })(),
+    //unavailable, available
+    type: "Available" 
+}
 ]
 
 router.get("/:id", async (req, res) =>{
